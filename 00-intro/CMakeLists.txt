@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 3.5)
+
+project(hello)
+add_executable(hello hello.c)
+target_link_libraries(hello foo)
+add_library(foo SHARED foo.c)
+install(TARGETS hello foo DESTINATION hellosoft)
+set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+set(CMAKE_EXE_LINKER_FLAGS "-Wl,-rpath='$ORIGIN'")
+
+include(InstallRequiredSystemLibraries)
+
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "My funky project")
+set(CPACK_PACKAGE_VENDOR "Me, myself, and I")
+set(CPACK_PACKAGE_VERSION_MAJOR "1")
+set(CPACK_PACKAGE_VERSION_MINOR "3")
+set(CPACK_PACKAGE_VERSION_PATCH "2")
+set(CPACK_PACKAGE_INSTALL_DIRECTORY "CMake ${CMake_VERSION_MAJOR}.${CMake_VERSION_MINOR}")
+set(CPACK_PACKAGE_EXECUTABLES "hello")
+include(CPack)
