@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-void foo()
+void foo1()
 {
-	printf("foo\n");
+	printf("foo1\n");
 }

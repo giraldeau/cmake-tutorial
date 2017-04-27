@@ -2,9 +2,10 @@ cmake_minimum_required(VERSION 3.5)
 
 project(hello)
 add_executable(hello hello.c)
-target_link_libraries(hello foo)
-add_library(foo SHARED foo.c)
-install(TARGETS hello foo DESTINATION hellosoft)
+target_link_libraries(hello foo1 foo2)
+add_library(foo1 SHARED foo1.c)
+add_library(foo2 STATIC foo2.c)
+install(TARGETS hello foo1 foo2 DESTINATION hellosoft)
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 set(CMAKE_EXE_LINKER_FLAGS "-Wl,-rpath='$ORIGIN'")
 

@@ -1,9 +1,11 @@
 #include <stdlib.h> 
 #include <stdio.h> 
-#include "foo.h"
+#include "foo1.h"
+#include "foo2.h"
 int main()
 {
 	printf("hello\n");
-	foo();
+	foo1();
+	foo2();
 	return 0;
 }
