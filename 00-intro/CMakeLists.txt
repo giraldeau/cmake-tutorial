@@ -9,6 +9,15 @@ install(TARGETS hello foo1 foo2 DESTINATION hellosoft)
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 set(CMAKE_EXE_LINKER_FLAGS "-Wl,-rpath='$ORIGIN'")
 
+set(MY_VAR "foo" CACHE STRING "super doc foo")
+set(MY_VAR "bar" CACHE STRING "super doc bar" FORCE)
+
+#if(WIN32)
+#else(WIN32)
+#  set(MY_VAR "bar" STRING "super doc bar")
+#endif(WIN32)
+
+message("MY_VAR value is: " ${MY_VAR})
 include(InstallRequiredSystemLibraries)
 
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "My funky project")
