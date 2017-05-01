@@ -1,0 +1,26 @@
+From 25ee23cc79b4765621eaa6a116a2041ace51a12e Mon Sep 17 00:00:00 2001
+From: Francis Giraldeau <francis.giraldeau@gmail.com>
+Date: Mon, 1 May 2017 14:06:59 -0400
+Subject: [PATCH] Revert "Build: Bump GNU Gettext version requirement to 0.19."
+
+This reverts commit ade31a2bfb95c94d05fbfc0ecbba5d6377f2506e.
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 9786a3b..dd7c6cb 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -609,7 +609,7 @@ AM_CONDITIONAL([COND_SHARED], [test "x$enable_shared" != xno])
+ 
+ echo
+ echo "Initializing gettext:"
+-AM_GNU_GETTEXT_VERSION([0.19])
++AM_GNU_GETTEXT_VERSION([0.18])
+ AM_GNU_GETTEXT([external])
+ 
+ 
+-- 
+1.8.3.1
+
