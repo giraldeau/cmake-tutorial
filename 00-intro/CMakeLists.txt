@@ -1,23 +1,20 @@
 cmake_minimum_required(VERSION 3.5)
-
 project(hello)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+add_subdirectory(foo1)
+add_subdirectory(foo2)
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 add_executable(hello hello.c)
 target_link_libraries(hello foo1 foo2)
-add_library(foo1 SHARED foo1.c)
-add_library(foo2 STATIC foo2.c)
-install(TARGETS hello foo1 foo2 DESTINATION hellosoft)
+install(TARGETS hello DESTINATION bin)
+
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
-set(CMAKE_EXE_LINKER_FLAGS "-Wl,-rpath='$ORIGIN'")
+set(CMAKE_EXE_LINKER_FLAGS "-Wl,-rpath='$ORIGIN/../lib'")
 
-set(MY_VAR "foo" CACHE STRING "super doc foo")
-set(MY_VAR "bar" CACHE STRING "super doc bar" FORCE)
-
-#if(WIN32)
-#else(WIN32)
-#  set(MY_VAR "bar" STRING "super doc bar")
-#endif(WIN32)
-
-message("MY_VAR value is: " ${MY_VAR})
 include(InstallRequiredSystemLibraries)
 
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "My funky project")
@@ -26,5 +23,6 @@ set(CPACK_PACKAGE_VERSION_MAJOR "1")
 set(CPACK_PACKAGE_VERSION_MINOR "3")
 set(CPACK_PACKAGE_VERSION_PATCH "2")
 set(CPACK_PACKAGE_INSTALL_DIRECTORY "CMake ${CMake_VERSION_MAJOR}.${CMake_VERSION_MINOR}")
-set(CPACK_PACKAGE_EXECUTABLES "hello")
+set(CPACK_PACKAGE_EXECUTABLES hello "hello")
+set(CPACK_STRIP_FILES true)
 include(CPack)
