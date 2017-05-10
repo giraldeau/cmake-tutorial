@@ -11,14 +11,14 @@ find_library(MKL_LIBRARIES mkl_rt
     PATHS
     $ENV{MKLROOT}/${NS_MKL_PATH}
     $ENV{HOME}/${NS_MKL_PREFIX}/${NS_MKL_PATH}
-    /opt/intel/${NS_MKL_PREFIX}/${NS_MKL_PATH}
+    /opt/${NS_MKL_PREFIX}/${NS_MKL_PATH}
 )
 
 find_path(MKL_INCLUDES mkl.h
     PATHS
     $ENV{MKLROOT}/${NS_MKL_PATH}/include
     $ENV{HOME}/${NS_MKL_PREFIX}/include
-    /opt/intel/${NS_MKL_PREFIX}/include
+    /opt/${NS_MKL_PREFIX}/include
 )
 
 include(FindPackageHandleStandardArgs)
