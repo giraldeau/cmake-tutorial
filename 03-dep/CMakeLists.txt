@@ -23,14 +23,27 @@ ExternalProject_Add(xz
 autogen(xz)
 
 ExternalProject_Get_Property(xz install_dir)
+set(xz_install_dir ${install_dir})
+
+ExternalProject_Add(foolib
+	SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/foo
+	CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}
+)
+ExternalProject_Get_Property(foolib install_dir)
+set(foolib_install_dir ${install_dir})
+find_library(FOO1_LIBRARY foo1 PATHS ${foolib_install_dir})
 
 project(deps)
 add_executable(deps deps.c)
-include_directories(${install_dir}/include)
+include_directories(${foolib_install_dir} ${xz_install_dir}/include)
 
 # TODO: use find_library instead
 add_library(lzma SHARED IMPORTED)
 add_dependencies(lzma xz)
 set_property(TARGET lzma PROPERTY IMPORTED_LOCATION ${CMAKE_BINARY_DIR}/lib/liblzma.so)
 
-target_link_libraries(deps lzma)
+add_dependencies(deps foolib)
+target_link_libraries(deps lzma ${FOO1_LIBRARY})
+enable_testing()
+add_test(depsTest deps)
+
