@@ -17,3 +17,11 @@ include_directories(${FOO_INCLUDES})
 
 set(BAR_INCLUDES "bar")
 target_include_directories(solver PUBLIC ${BAR_INCLUDES})
+
+IF(UNIX)
+  set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+  set(CMAKE_EXE_LINKER_FLAGS "-Wl,-rpath='$ORIGIN'")
+ENDIF()
+
+install(FILES ${MKL_LIBRARIES} DESTINATION bin)
+install(TARGETS solver DESTINATION bin)
