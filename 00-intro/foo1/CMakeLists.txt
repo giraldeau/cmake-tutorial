@@ -1,5 +1,5 @@
 add_library(foo1 SHARED foo1.c)
-install(TARGETS foo1 DESTINATION bin)
+install(TARGETS foo1 DESTINATION lib)
 
 target_compile_definitions(foo1 PRIVATE FOO1_LIBRARY)
 # add_definitions() affects all targets

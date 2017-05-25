@@ -6,7 +6,7 @@
 int main()
 {
 	printf("hello\n");
-	foo1();
+    foo1();
 	foo2();
 	return 0;
 }

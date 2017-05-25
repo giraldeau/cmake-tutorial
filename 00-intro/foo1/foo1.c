@@ -3,5 +3,5 @@
 #include "foo1.h"
 void foo1()
 {
-	printf("foo1\n");
+    printf("foo1 %s\n", HELLO_VERSION);
 }
