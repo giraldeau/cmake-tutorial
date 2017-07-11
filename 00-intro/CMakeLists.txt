@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 project(helloProject)
-set (HELLO_VERSION_MAJOR 1)
+set (HELLO_VERSION_MAJOR 6)
 set (HELLO_VERSION_MINOR 2)
 set (HELLO_VERSION_PATCH 3)
 set (HELLO_VERSION_LABEL "rc1")
@@ -17,7 +17,7 @@ IF(UNIX)
 ENDIF()
 
 option(CONFIG_FOO1 "foo1 feature" ON)
-configure_file(program.h.in program.h)
+configure_file(program.h.in ${CMAKE_CURRENT_BINARY_DIR}/program.h)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
