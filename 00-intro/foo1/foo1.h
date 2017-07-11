@@ -13,9 +13,4 @@
 #endif
 
 #include <program.h>
-
-#ifdef CONFIG_FOO1
 void LIBFOO1SHARED_EXPORT foo1();
-#else
-void LIBFOO1SHARED_EXPORT foo1() {}
-#endif

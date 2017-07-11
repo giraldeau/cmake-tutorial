@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(hello)
+project(helloProject)
 set (HELLO_VERSION_MAJOR 1)
 set (HELLO_VERSION_MINOR 2)
 set (HELLO_VERSION_PATCH 3)
