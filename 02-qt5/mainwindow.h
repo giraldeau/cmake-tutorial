@@ -3,13 +3,23 @@
 
 #include <QMainWindow>
 
+namespace Ui {
+class MainWindow;
+}
+
 class MainWindow : public QMainWindow
 {
-    Q_OBJECT
+   Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+   explicit MainWindow(QWidget *parent = 0);
+   ~MainWindow();
+
+private slots:
+   void on_pushButton_clicked();
+
+private:
+   Ui::MainWindow *ui;
 };
 
 #endif // MAINWINDOW_H
